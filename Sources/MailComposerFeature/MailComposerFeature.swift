@@ -35,6 +35,8 @@ public struct MailComposerFeature: Sendable {
     
     @Dependency(\.dismiss) private var dismiss
     
+    public init() {}
+    
     public var body: some ReducerOf<Self> {
         Reduce<State, Action> { state, action in
             switch action {

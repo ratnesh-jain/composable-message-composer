@@ -24,7 +24,7 @@ public struct MessageComposerView: UIViewControllerRepresentable {
         viewController.subject = store.subject
         viewController.body = store.body
         viewController.messageComposeDelegate = context.coordinator
-        if let attachment = store.attachment {
+        for attachment in store.attachments {
             viewController.addAttachmentData(attachment.data, typeIdentifier: attachment.mimeType, filename: attachment.fileName)
         }
         return viewController

@@ -24,13 +24,14 @@ let package = Package(
         .package(url: "https://github.com/pointfreeco/swift-composable-architecture", .upToNextMajor(from: "1.0.0"))
     ],
     targets: [
+        .target(name: "Models"),
         .target(
             name: "MailComposerFeature",
-            dependencies: [.tca]
+            dependencies: [.tca, "Models"]
         ),
         .target(
             name: "MessageComposerFeature",
-            dependencies: [.tca]
+            dependencies: [.tca, "Models"]
         ),
     ]
 )

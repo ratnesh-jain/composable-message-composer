@@ -7,35 +7,24 @@
 
 import ComposableArchitecture
 import Foundation
+import Models
 
 @Reducer
 public struct MailComposerFeature: Sendable {
-    public struct Attachment: Equatable, Sendable {
-        public var data: Data
-        public var mimeType: String
-        public var fileName: String
-        
-        public init(data: Data, mimeType: String, fileName: String) {
-            self.data = data
-            self.mimeType = mimeType
-            self.fileName = fileName
-        }
-    }
-    
     @ObservableState
     public struct State: Equatable {
         var receipients: [String]?
         var subject: String
         var message: String
         var isMessageHTML: Bool
-        var attachment: Attachment?
+        var attachments: [Attachment]
         
-        public init(receipients: [String]? = nil, subject: String = "", message: String = "", isMessageHTML: Bool = false, attachment: Attachment? = nil) {
+        public init(receipients: [String]? = nil, subject: String = "", message: String = "", isMessageHTML: Bool = false, attachments: [Attachment] = []) {
             self.receipients = receipients
             self.subject = subject
             self.message = message
             self.isMessageHTML = isMessageHTML
-            self.attachment = attachment
+            self.attachments = attachments
         }
     }
     

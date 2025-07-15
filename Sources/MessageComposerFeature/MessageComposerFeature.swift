@@ -10,16 +10,30 @@ import Foundation
 
 @Reducer
 public struct MessageComposerFeature: Sendable {
+    public struct Attachment: Equatable, Sendable {
+        public var data: Data
+        public var mimeType: String
+        public var fileName: String
+        
+        public init(data: Data, mimeType: String, fileName: String) {
+            self.data = data
+            self.mimeType = mimeType
+            self.fileName = fileName
+        }
+    }
+    
     @ObservableState
     public struct State: Equatable {
         var receipients: [String]?
         var subject: String?
         var body: String?
+        var attachment: Attachment?
         
-        public init(receipients: [String]? = nil, subject: String? = nil, body: String? = nil) {
+        public init(receipients: [String]? = nil, subject: String? = nil, body: String? = nil, attachment: Attachment? = nil) {
             self.receipients = receipients
             self.subject = subject
             self.body = body
+            self.attachment = attachment
         }
     }
     

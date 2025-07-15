@@ -23,6 +23,9 @@ public struct MailComposerView: UIViewControllerRepresentable {
         viewController.setToRecipients(store.receipients)
         viewController.setSubject(store.subject)
         viewController.setMessageBody(store.message, isHTML: store.isMessageHTML)
+        if let attachment = store.attachment {
+            viewController.addAttachmentData(attachment.data, mimeType: attachment.mimeType, fileName: attachment.fileName)
+        }
         return viewController
     }
     

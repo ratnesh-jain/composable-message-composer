@@ -7,7 +7,7 @@
 
 import ComposableArchitecture
 import Foundation
-import Models
+import MessageModels
 
 @Reducer
 public struct MailComposerFeature: Sendable {

@@ -13,14 +13,22 @@ import MessageModels
 public struct MailComposerFeature: Sendable {
     @ObservableState
     public struct State: Equatable {
-        var receipients: [String]?
+        var recipients: [String]?
         var subject: String
         var message: String
         var isMessageHTML: Bool
         var attachments: [Attachment]
         
-        public init(receipients: [String]? = nil, subject: String = "", message: String = "", isMessageHTML: Bool = false, attachments: [Attachment] = []) {
-            self.receipients = receipients
+        public init(info: MailComposerInfo) {
+            self.recipients = info.recipients
+            self.subject = info.subject
+            self.message = info.message
+            self.isMessageHTML = info.isMessageHTML
+            self.attachments = info.attachments
+        }
+        
+        public init(recipients: [String]? = nil, subject: String = "", message: String = "", isMessageHTML: Bool = false, attachments: [Attachment] = []) {
+            self.recipients = recipients
             self.subject = subject
             self.message = message
             self.isMessageHTML = isMessageHTML

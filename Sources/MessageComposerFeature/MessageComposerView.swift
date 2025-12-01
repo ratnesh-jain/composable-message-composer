@@ -5,6 +5,7 @@
 //  Created by Ratnesh Jain on 20/06/25.
 //
 
+#if canImport(UIKit)
 import ComposableArchitecture
 import Foundation
 import MessageUI
@@ -20,7 +21,7 @@ public struct MessageComposerView: UIViewControllerRepresentable {
     
     public func makeUIViewController(context: Context) -> MFMessageComposeViewController {
         let viewController = MFMessageComposeViewController()
-        viewController.recipients = store.receipients
+        viewController.recipients = store.recipients
         viewController.subject = store.subject
         viewController.body = store.body
         viewController.messageComposeDelegate = context.coordinator
@@ -51,3 +52,4 @@ public struct MessageComposerView: UIViewControllerRepresentable {
     }
     
 }
+#endif

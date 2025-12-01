@@ -11,7 +11,7 @@ extension Target.Dependency {
 
 let package = Package(
     name: "composable-message-composer",
-    platforms: [.iOS(.v17)],
+    platforms: [.iOS(.v17), .macOS(.v15)],
     products: [
         .library(
             name: "MailComposerFeature",

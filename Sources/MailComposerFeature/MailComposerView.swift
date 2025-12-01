@@ -5,6 +5,7 @@
 //  Created by Ratnesh Jain on 20/06/25.
 //
 
+#if canImport(UIKit)
 import ComposableArchitecture
 import Foundation
 import MessageUI
@@ -20,7 +21,7 @@ public struct MailComposerView: UIViewControllerRepresentable {
     public func makeUIViewController(context: Context) -> MFMailComposeViewController {
         let viewController = MFMailComposeViewController()
         viewController.mailComposeDelegate = context.coordinator
-        viewController.setToRecipients(store.receipients)
+        viewController.setToRecipients(store.recipients)
         viewController.setSubject(store.subject)
         viewController.setMessageBody(store.message, isHTML: store.isMessageHTML)
         for attachment in store.attachments {
@@ -48,3 +49,5 @@ public struct MailComposerView: UIViewControllerRepresentable {
         Coordinator(store: self.store)
     }
 }
+
+#endif
